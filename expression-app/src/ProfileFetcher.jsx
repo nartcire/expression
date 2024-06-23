@@ -6,13 +6,14 @@ const ProfileFetcher = () => {
     useEffect(() => {
       fetch('https://randomuser.me/api/')
         .then(response => response.json())
-        .then(json => setProfile(json['results'][0].gender))
+        .then(json => setProfile(json['results'][0]))
         .catch(error => console.error(error));
     }, []);
 
     return (
         <div>
-            {profile ? <pre>{JSON.stringify(profile, null, 2)}</pre> : 'Loading...'}
+            {profile ? profile : 'Loading'}
+            {/* {profile ? <pre>{JSON.stringify(profile, null, 2)}</pre> : 'Loading...'} */}
         </div>
     )
 }
